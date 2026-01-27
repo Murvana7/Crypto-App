@@ -13,31 +13,7 @@ A lightweight web app that displays real-time cryptocurrency prices using a publ
 
 - Fast and lightweight
 
-🛠️ Built With
-
-- HTML
-
-- CSS
-
-- JavaScript
-
-- Public Crypto API (e.g. CoinGecko)
-
-📦 How to Run
-
-- Clone the repository
-
-- Open index.html in your browser
-
-🎯 Use Cases
-
-- Learning API integration
-
-- Practicing frontend development
-
-- Tracking crypto prices quickly
-
-👷‍♂️Built With
+🛠️Built With
 
 - <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 
