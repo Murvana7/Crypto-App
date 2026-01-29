@@ -11,8 +11,6 @@ A lightweight web app that displays real-time cryptocurrency prices using a publ
 
 - Clean and simple UI
 
-- Fast and lightweight
-
 🛠️Built With
 
 - <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
