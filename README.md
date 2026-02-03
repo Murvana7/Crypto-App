@@ -3,7 +3,7 @@
 
 A lightweight web app that displays real-time cryptocurrency prices using a public API.
 
-✨ Features
+## ✨ Features
 
 - Live crypto price updates
 
@@ -11,7 +11,7 @@ A lightweight web app that displays real-time cryptocurrency prices using a publ
 
 - Clean and simple UI
 
-🛠️Built With
+## 🛠️Built With
 
 <p align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" />
