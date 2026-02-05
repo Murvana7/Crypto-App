@@ -1,148 +1,322 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap');
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --bg:#161616;
+  --panel:#1f1f1f;
+  --panel2:#222;
+  --border:#333;
+  --text:#fff;
+  --muted:#b8b8b8;
+  --green:#2ecc71;
+  --red:#ff4d4d;
+  --blue:#587ef4;
 }
 
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #161616;
-  font-family: 'Mukta', sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  background:var(--bg);
+  font-family:'Mukta', sans-serif;
+  padding: 22px;
+  color: var(--text);
+}
+
+.app{ width:min(860px, 96vw); }
+
+.header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom: 14px;
+}
+
+h1{ font-size:28px; line-height:1.1; }
+.sub{ color: var(--muted); margin-top: 6px; font-size: 14px; }
+
+.head-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+.pill{
+  border:1px solid var(--border);
+  background:var(--panel2);
+  color:#ddd;
+  padding:8px 10px;
+  border-radius:999px;
+  font-size: 12px;
+}
+
+.pill.btn{ cursor:pointer; color:#fff; }
+#status[data-type="ok"]{ border-color: rgba(46,204,113,.55); }
+#status[data-type="bad"]{ border-color: rgba(255,77,77,.65); }
+#status[data-type="info"]{ border-color: rgba(88,126,244,.6); }
+
+.panel{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.panel-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom: 10px;
+}
+
+.panel h2{ font-size:18px; }
+.small{ color: var(--muted); font-size: 12px; }
+
+.add-row{
+  display:grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items:center;
+}
+
+@media(max-width: 720px){
+  .add-row{ grid-template-columns: 1fr; }
+}
+
+.search-wrap{ position:relative; }
+
+input, button, select{
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  font: inherit;
+}
+
+input{ width: 100%; }
+
+.primary{
+  background: linear-gradient(90deg, rgba(88,126,244,.95), rgba(56,189,248,.85));
+  border:none;
+  font-weight: 800;
+  cursor:pointer;
+  color:#071019;
+}
+
+.primary:active{ transform: translateY(1px); }
+
+.suggest{
+  position:absolute;
+  top: calc(100% + 8px);
+  left:0; right:0;
+  background: #111;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+  overflow:hidden;
+  z-index: 20;
+  max-height: 280px;
+  overflow-y:auto;
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+
+.suggest.hide{ display:none; }
+
+.suggest-item{
+  padding: 10px 12px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.suggest-item:first-child{ border-top:none; }
+.suggest-item:hover{ background: rgba(255,255,255,.06); }
+
+.suggest-left{
+  display:flex; flex-direction:column;
+  line-height:1.1;
+}
+.suggest-name{ font-weight: 800; }
+.suggest-id{ color: var(--muted); font-size: 12px; }
+
+.chips{
+  margin-top: 10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  color:#ddd;
+  font-size: 12px;
+}
+
+.chip b{ color:#fff; }
+.chip button{
+  padding: 2px 8px;
+  border-radius: 999px;
+  cursor:pointer;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.14);
+  color:#ddd;
 }
 
 .container{
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 20px;
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
 }
 
-/* coin card */
-.coin{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 460px;
-  height: 80px;
-  border-radius: 8px;
-  padding: 0 18px;
-  background: #222;
-  color: #fff;
-  border: 1px solid #333;
+.card{
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display:grid;
+  grid-template-columns: 70px 1fr 220px;
+  gap: 12px;
+  align-items:center;
 }
 
-/* LEFT border indicator */
-.coin.falling{
-  border-left: 6px solid #ff4d4d;
+@media(max-width: 720px){
+  .card{ grid-template-columns: 64px 1fr; }
+  .right{ grid-column: 1 / -1; justify-content:flex-end; }
 }
 
-.coin.rising{
-  border-left: 6px solid #2ecc71;
+.logo{
+  width: 64px;
+  height: 64px;
+  display:grid;
+  place-items:center;
 }
-
-/* logo */
-.coin .coin-logo{
-  width: 80px;
-  height: 100%;
-  display: grid;
-  place-items: center;
-}
-
-.coin .coin-logo img{
-  width: 70%;
-  height: 70%;
+.logo img{
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
 
-/* name area */
-.coin .coin-name{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+.mid{
+  display:flex;
+  flex-direction:column;
+  gap: 4px;
 }
-
-.coin .coin-name h3{
-  color: #fff;
-  font-size: 26px;
+.nameRow{
+  display:flex;
+  align-items:baseline;
+  gap: 8px;
+  flex-wrap:wrap;
+}
+.name{
+  font-weight: 900;
+  font-size: 20px;
   text-transform: uppercase;
+}
+.sym{
+  color: var(--muted);
   font-weight: 700;
+  font-size: 13px;
+}
+.tags{
+  color: var(--muted);
+  font-size: 12px;
 }
 
-.coin .coin-name span{
-  color: #aaa;
-  font-size: 14px;
-  font-weight: 500;
-  margin: 6px 0 0 6px;
+.right{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap: 12px;
 }
 
-/* price area */
-.coin .coin-price{
-  display: grid;
-  align-items: center;
-  margin-left: auto;
-  padding: 8px 22px 0 0;
-  text-align: right;
+.priceBlock{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap: 4px;
+  min-width: 140px;
+}
+.price{
+  font-weight: 900;
+  font-size: 20px;
+  line-height:1;
+}
+.change{
+  font-weight: 800;
+  font-size: 13px;
+  line-height:1;
+  color: var(--muted);
+}
+.change.up{ color: #30ff20; }
+.change.down{ color: var(--red); }
+.change.neutral{ color: #bbb; }
+
+.sparkWrap{
+  width: 160px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+  overflow:hidden;
 }
 
-.coin .coin-price .price{
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: -6px;
+.sparkWrap canvas{
+  width: 100%;
+  height: 100%;
+  display:block;
 }
 
-.coin .coin-price .change{
-  color: #aaa;
-  font-size: 16px;
-  font-weight: 600;
-  margin-top: -30px;
+.actions{
+  display:flex;
+  gap: 8px;
+}
+.actions button{
+  cursor:pointer;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.12);
+  color:#fff;
+}
+.actions button:hover{ background: rgba(255,255,255,.06); }
+
+.badge{
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--muted);
+}
+.badge.pin{ border-color: rgba(56,189,248,.45); color:#cfefff; }
+
+.foot{
+  margin-top: 10px;
+  color:#7b7b7b;
+  font-size: 12px;
 }
 
-/* rising style */
-.coin.rising{
-  background: linear-gradient(90deg, #202022, #4eb64510);
+.loading, .errorBox{
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  color: #ddd;
 }
-
-.coin.rising .coin-price .price{
-  color: #30ff20;
-}
-
-/* falling style */
-.coin.falling{
-  background: linear-gradient(90deg, #202022, #aa444425);
-}
-
-.coin.falling .coin-price .price{
-  color: #ff4040;
-}
-.coin .coin-price{
-  margin-left: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;   /* right align */
-  justify-content: center; /* vertical center */
-  gap: 4px;                /* spacing between price & change */
-  padding-right: 6px;
-  text-align: right;
-}
-
-.coin .coin-price .price{
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1;          /* keeps it tight */
-  margin: 0;               /* remove weird shifts */
-}
-
-.coin .coin-price .change{
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
-  margin: 0;               /* remove weird shifts */
-  color: #aaa;
-}
-.coin .coin-price { width: 140px; }
+.errorBox{ border-color: rgba(255,77,77,.55); }
