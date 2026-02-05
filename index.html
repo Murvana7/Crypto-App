@@ -1,24 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-     <title>Crypto Price App</title>
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23030712'/%3E%3Cpath d='M14 40l10-10 8 6 12-14 6 6' fill='none' stroke='%2338bdf8' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23030712'/%3E%3Cpath d='M14 40l10-10 8 6 12-14 6 6' fill='none' stroke='%2338bdf8' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <title>Crypto Price App — Premium</title>
 </head>
 
 <body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>Crypto Prices</h1>
+        <p class="sub">
+          Dynamic watchlist • Currency switch • Sparklines • Cache • Retry/backoff
+        </p>
+      </div>
 
-    <div class="container"></div>
+      <div class="head-actions">
+        <select id="currency" class="pill">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="gel">GEL</option>
+        </select>
 
+        <button id="toggleSparklines" class="pill btn">Sparklines: ON</button>
+        <button id="refresh" class="pill btn">Refresh</button>
+        <span id="status" class="pill" data-type="info">Loading…</span>
+      </div>
+    </header>
 
-    <script src="index.js"></script>
+    <!-- Add coin -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Watchlist</h2>
+        <div class="small" id="meta">—</div>
+      </div>
+
+      <div class="add-row">
+        <div class="search-wrap">
+          <input id="coinSearch" type="text" placeholder="Search coins (e.g., solana, pepe, ton)..." />
+          <div id="suggest" class="suggest hide"></div>
+        </div>
+
+        <button id="addCoinBtn" class="primary">Add</button>
+
+        <select id="refreshInterval" class="pill">
+          <option value="30000">Auto: 30s</option>
+          <option value="60000">Auto: 1m</option>
+          <option value="120000">Auto: 2m</option>
+          <option value="300000">Auto: 5m</option>
+          <option value="0">Auto: OFF</option>
+        </select>
+      </div>
+
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <!-- List -->
+    <section class="container" id="container"></section>
+
+    <footer class="foot">
+      Data: CoinGecko • Caching enabled • Sparklines use 7-day market chart
+    </footer>
+  </div>
+
+  <script src="index.js"></script>
 </body>
-
-
 </html>
-
